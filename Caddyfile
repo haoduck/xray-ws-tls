@@ -1,0 +1,9 @@
+你的域名 {
+        reverse_proxy https://www.amazon.com {
+                header_up Host {upstream_hostport}
+                header_up X-Forwarded-Host {host}
+        }
+        handle_path /ws {
+                reverse_proxy xray-ws-tls-xray:41583
+        }
+}

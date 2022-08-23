@@ -1,0 +1,19 @@
+version: '3'
+services:
+  xray:
+    image: teddysun/xray:latest
+    restart: always
+    volumes:
+      - ./config.json:/etc/xray/config.json
+    container_name: xray-ws-tls-xray
+  caddy:
+    image: caddy:latest
+    restart: always
+    depends_on:
+      - xray
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+    container_name: xray-ws-tls-caddy
+    ports:
+      - "80:80"
+      - "443:443"
