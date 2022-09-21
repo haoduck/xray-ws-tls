@@ -73,4 +73,4 @@ docker-compose up -d
 uuid=$(cat config.json |grep '\"id\":'|awk -F '"' '{print $4}')
 domain=$(cat Caddyfile |grep ' {'|head -n 1|awk -F ' {' '{print $1}')
 path=$(cat Caddyfile|grep handle_path|awk -F ' ' '{print $2}')
-echo -e '\n\n\n';'echo "vless://${uuid}@${domain}:443?encryption=none&security=tls&type=ws&host=${domain}&path=${path:-/ws}#${domain}-xray-ws-tls"
+echo -e '\n\n\n';echo "vless://${uuid}@${domain}:443?encryption=none&security=tls&type=ws&host=${domain}&path=${path:-/ws}#${domain}-xray-ws-tls"
